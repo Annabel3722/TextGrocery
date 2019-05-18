@@ -18,4 +18,4 @@ grocery.save()
 # grocery name must be the same as the previous one
 new_grocery = Grocery('test')
 new_grocery.load()
-print new_grocery.predict('考生必读：新托福写作考试评分标准')
+print(new_grocery.predict('考生必读：新托福写作考试评分标准'))

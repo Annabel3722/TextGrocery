@@ -1,9 +1,9 @@
 from collections import defaultdict
-import cPickle
+import pickle5
 import os
 
 import jieba
-from base import *
+from .base import *
 
 __all__ = ['GroceryTextConverter']
 
@@ -11,9 +11,9 @@ __all__ = ['GroceryTextConverter']
 def _dict2list(d):
     if len(d) == 0:
         return []
-    m = max(v for k, v in d.iteritems())
+    m = max(v for k, v in d.items())
     ret = [''] * (m + 1)
-    for k, v in d.iteritems():
+    for k, v in d.items():
         ret[v] = k
     return ret
 
@@ -47,10 +47,10 @@ class GroceryTextPreProcessor(object):
     def save(self, dest_file):
         self.idx2tok = _dict2list(self.tok2idx)
         config = {'idx2tok': self.idx2tok}
-        cPickle.dump(config, open(dest_file, 'wb'), -1)
+        pickle5.dump(config, open(dest_file, 'wb'), -1)
 
     def load(self, src_file):
-        config = cPickle.load(open(src_file, 'rb'))
+        config = pickle5.load(open(src_file, 'rb'))
         self.idx2tok = config['idx2tok']
         self.tok2idx = _list2dict(self.idx2tok)
         return self
@@ -82,10 +82,10 @@ class GroceryFeatureGenerator(object):
     def save(self, dest_file):
         self.fidx2ngram = _dict2list(self.ngram2fidx)
         config = {'fidx2ngram': self.fidx2ngram}
-        cPickle.dump(config, open(dest_file, 'wb'), -1)
+        pickle5.dump(config, open(dest_file, 'wb'), -1)
 
     def load(self, src_file):
-        config = cPickle.load(open(src_file, 'rb'))
+        config = pickle5.load(open(src_file, 'rb'))
         self.fidx2ngram = config['fidx2ngram']
         self.ngram2fidx = _list2dict(self.fidx2ngram)
         return self
@@ -117,10 +117,10 @@ class GroceryClassMapping(object):
     def save(self, dest_file):
         self.idx2class = _dict2list(self.class2idx)
         config = {'idx2class': self.idx2class}
-        cPickle.dump(config, open(dest_file, 'wb'), -1)
+        pickle5.dump(config, open(dest_file, 'wb'), -1)
 
     def load(self, src_file):
-        config = cPickle.load(open(src_file, 'rb'))
+        config = pickle5.load(open(src_file, 'rb'))
         self.idx2class = config['idx2class']
         self.class2idx = _list2dict(self.idx2class)
         return self

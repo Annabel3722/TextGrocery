@@ -11,23 +11,23 @@ train_src = [
     ('sports', '四川丹棱举行全国长距登山挑战赛 近万人参与')
 ]
 grocery.train(train_src)
-print grocery.get_load_status()
+print(grocery.get_load_status())
 
 test_src = [
     ('education', '福建春季公务员考试报名18日截止 2月6日考试'),
     ('sports', '意甲首轮补赛交战记录:米兰客场8战不败国米10年连胜'),
 ]
 test_result = grocery.test(test_src)
-print test_result.accuracy_labels
-print test_result.recall_labels
+print(test_result.accuracy_labels)
+print(test_result.recall_labels)
 
-grocery = Grocery('text_src')
-train_src = '../text_src/train_ch.txt'
-grocery.train(train_src)
-print grocery.get_load_status()
-
-test_src = '../text_src/test_ch.txt'
-test_result = grocery.test(test_src)
-print test_result.accuracy_labels
-print test_result.recall_labels
-test_result.show_result()
+# grocery = Grocery('text_src')
+# train_src = '../text_src/train_ch.txt'
+# grocery.train(train_src)
+# print(grocery.get_load_status())
+#
+# test_src = '../text_src/test_ch.txt'
+# test_result = grocery.test(test_src)
+# print(test_result.accuracy_labels)
+# print(test_result.recall_labels)
+# test_result.show_result()
